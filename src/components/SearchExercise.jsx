@@ -1,9 +1,49 @@
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { options, fetchData } from "../utils/fetchData";
 
 const SearchExercise = () => {
+  const [data, setData] = useState([]);
+  const [exercises, setExercises] = useState([]);
+  const [bodyPart, setBodyParts] = useState([])
+  const [search, setSearch] = useState("");
+
+
+  useEffect(async()=>{
+    const categories = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', options)
+    setBodyParts(categories)
+  }, [])
+
+  const handleSearch = async () => {
+    if (search) {
+      const data = await fetchData(
+        `https://exercisedb.p.rapidapi.com/exercises`,
+        options
+      );
+
+      const searchedExercises = data?.filter(
+        (ex) =>
+        ex.name.toLowerCase().includes(search) ||
+        ex.target.toLowerCase().includes(search) ||
+        ex.bodyPart.toLowerCase().includes(search) ||
+        ex.equipment.toLowerCase().includes(search)
+        );
+        
+        setExercises(searchedExercises);
+        setSearch('')
+        console.log(searchedExercises);
+    }
+  };
+
   return (
-    <Box sx={{width:{lg:"1448px", md:"auto"}, display:"flex", alignItems:"center", justifyContent:"center"}}>
+    <Box
+      sx={{
+        width: { lg: "1448px", md: "auto" },
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Stack alignItems="center" justifyContent="center">
         <Typography
           sx={{
@@ -28,8 +68,10 @@ const SearchExercise = () => {
               width: { lg: "1000px", xs: "320px" },
             }}
             height="76px"
-            value=""
-            onChange={(e) => {}}
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
             type="text"
             placeholder="Search Exercise"
           />
@@ -41,8 +83,9 @@ const SearchExercise = () => {
               borderRadius: "2px",
               width: { lg: "175px", xs: "80px" },
               color: "#fff",
-              textTransform:"none",
+              textTransform: "none",
             }}
+            onClick={handleSearch}
           >
             Search
           </Button>
