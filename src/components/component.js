@@ -5,3 +5,4 @@ export { default as Footer } from "./Footer";
 export { default as Banner } from "./Banner";
 export { default as SearchExercise } from "./SearchExercise";
 export { default as Exercise } from "./Exercise";
+export {default as Scrollbar} from "./Scrollbar"
