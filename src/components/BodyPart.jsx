@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box, Typography, Stack } from "@mui/material";
 import logo from "../assets/icons/gym.png";
-const BodyPart = ({ item, bodyPart, setBodyPart }) => {
+import { SelectedCategoryContext } from "../context/SelectedCategoryContext";
+const BodyPart = ({ item}) => {
+  const {data} = useContext(SelectedCategoryContext)
+  console.log(data)
   return (
     <Stack
       alignItems="center"
       justifyContent="center"
       className="bodyPart-card"
       sx={{
-        borderTop: bodyPart === item.toUpperCase() ? "4px solid red" : "",
+        borderTop: data?.bodyPart === item.toUpperCase() ? "4px solid red" : "",
         width: "250px",
         height: "260px",
         bgcolor: "#FFF3F3",

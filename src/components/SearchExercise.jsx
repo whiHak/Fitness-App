@@ -3,7 +3,7 @@ import React, { useContext,  useState } from "react";
 import Scrollbar from "./Scrollbar";
 import { ExerciseContext } from "../context/ExerciseContext";
 
-const SearchExercise = ({bodyPart, setBodyPart}) => {
+const SearchExercise = () => {
   const [exercises, setExercises] = useState([]);
   const [search, setSearch] = useState("");
   const exercise = useContext(ExerciseContext);
@@ -88,13 +88,13 @@ const SearchExercise = ({bodyPart, setBodyPart}) => {
           alignItems="center"
           sx={{
             position: "relative",
-            width: "90vw",
+            width: {xs:"90vw", lg:"1450px"},
             p: "20px",
             m: " 20px 40px",
           }}
           className="scroll-bar"
         >
-          <Scrollbar bodyPart={bodyPart} setBodyPart={setBodyPart} />
+          <Scrollbar />
         </Box>
       </Stack>
     </Box>

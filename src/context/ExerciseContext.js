@@ -1,10 +1,13 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { fetchData, options } from "../utils/fetchData";
+import { CategoriesContext } from "./CategoriesContext";
 
 export const ExerciseContext = createContext();
 
 export const ExerciseContextProvider = ({ children }) => {
   const [exercise, setExercise] = useState([]);
+  const bodyPart = useContext(CategoriesContext)
+
   useEffect(() => {
     const unsub = async () => {
       const data = await fetchData(
