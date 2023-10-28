@@ -90,6 +90,10 @@ body {
   height: 326px;
 }
 
+.scroll-bar {
+  overflow-x: scroll;
+  scroll-snap-type: x ;
+}
 .bodyPart-card {
   transform: scale(1, 1);
   transition: 0.3s all ease-in-out;

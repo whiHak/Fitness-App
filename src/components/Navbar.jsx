@@ -11,7 +11,7 @@ const Navbar = () => {
         display: "flex",
         justifyContent: "none",
         alignItems:"flex-end",
-        mt: { sm: "32px", xs: "20px" },
+        pt: { sm: "32px", xs: "20px" },
         gap: { sm: "122px", xs: "40px " },
         px: "10px",
       }}

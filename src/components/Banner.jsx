@@ -11,6 +11,7 @@ const Banner = () => {
         justifyContent="center"
         px="40px"
       >
+      
         <Typography
           sx={{ color: "#FF2625", fontSize: "24px", fontWeight: "bold" }}
         >
