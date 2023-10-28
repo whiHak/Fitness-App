@@ -38,6 +38,7 @@ const Banner = () => {
             alignItems: "center",
             cursor: "pointer",
           }}
+          onClick={()=>window.scrollTo({top:"1700", behavior:"smooth"})}
         >
           Explore Exercise
         </a>

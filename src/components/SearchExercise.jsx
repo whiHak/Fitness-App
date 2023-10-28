@@ -27,7 +27,7 @@ const SearchExercise = () => {
   return (
     <Box
       sx={{
-        width: { lg: "1448px", md: "auto" },
+        width: { lg: "98vw", md: "auto" },
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -88,7 +88,7 @@ const SearchExercise = () => {
           alignItems="center"
           sx={{
             position: "relative",
-            width: {xs:"90vw", lg:"1450px"},
+            width: {xs:"98vw", lg:"98vw"},
             p: "20px",
             m: " 20px 40px",
           }}

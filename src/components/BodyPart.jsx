@@ -4,7 +4,6 @@ import logo from "../assets/icons/gym.png";
 import { SelectedCategoryContext } from "../context/SelectedCategoryContext";
 const BodyPart = ({ item}) => {
   const {data} = useContext(SelectedCategoryContext)
-  console.log(data)
   return (
     <Stack
       alignItems="center"

@@ -8,11 +8,11 @@ const Scrollbar = () => {
   const items = useContext(CategoriesContext);
   const {dispatch}  = useContext(SelectedCategoryContext);
 
-  console.log(items);
 
   const handleClick = (e) => {
     console.log(e)
     dispatch({ type: "CHANGE_CATRGORY", payload: e });
+    window.scrollTo({top:"1700", behavior:"smooth"})
   };
 
   return (
