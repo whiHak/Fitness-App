@@ -6,34 +6,44 @@ import { fetchData, options, youtubeOptions } from "../utils/fetchData";
 
 const ExerciseDetails = () => {
   const [exerciseDetail, setExerciseDetail] = useState({});
+  const [exerciseVideos, setExerciseVideos] = useState({});
   const [relatedVideos, setRelatedVideos] = useState({})
   const { id } = useParams();
 
   useEffect(() => {
-    const fecth = async () => {
-      const doc = await fetchData(
-        `https://exercisedb.p.rapidapi.com/exercises/exercise/${id}`,
-        options
-      );
-      setExerciseDetail(doc);
-      const yDoc = await fetchData(
-        `https://youtube-search-and-download.p.rapidapi.com/search/q=${exerciseDetail?.name}`,
-        youtubeOptions
-      );
-      setRelatedVideos(yDoc)
+    const fetchDataFromAPIs = async () => {
+      try {
+        const exdoc = await fetchData(
+          ` https://exercisedb.p.rapidapi.com/exercises/exercise/${id}`,
+          options
+        );
+        setExerciseDetail(exdoc);
 
+        const yDoc = await fetchData(
+          `https://youtube-search-and-download.p.rapidapi.com/search?query=${exdoc?.name}`,
+          youtubeOptions
+        );
+        setExerciseVideos(yDoc);
+
+        const targetDoc = await fetchData(
+          `https://exercisedb.p.rapidapi.com/exercises/equipment/assisted?type=${exdoc?.target}`
+        );
+        setRelatedVideos(targetDoc)
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
 
-    return () => {
-      fecth();
-    };
+    fetchDataFromAPIs();
   }, [id]);
-
-
+  console.log(relatedVideos)
   return (
     <Box>
-      <Details  detail={exerciseDetail}  />
-      <ExerciseVideos  videos ={relatedVideos}/>
+      <Details detail={exerciseDetail} />
+      <ExerciseVideos
+        videos={exerciseVideos.contents}
+        name={exerciseDetail.name}
+      />
       <RelatedVideos />
     </Box>
   );

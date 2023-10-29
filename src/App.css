@@ -48,8 +48,8 @@ body {
 }
 
 .detail-image {
-  width: 729px;
-  height: 742px;
+  width: 629px;
+  height: 642px;
 }
 
 .banner {
@@ -114,7 +114,7 @@ body {
   flex-direction: column;
   gap: 24px;
   width: 387px;
-  height: 381px;
+  height: 300px;
   text-decoration: none;
 }
 
