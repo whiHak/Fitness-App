@@ -6,3 +6,6 @@ export { default as Banner } from "./Banner";
 export { default as SearchExercise } from "./SearchExercise";
 export { default as Exercise } from "./Exercise";
 export {default as Scrollbar} from "./Scrollbar"
+export {default as Details} from "./Details"
+export {default as ExerciseVideos} from "./ExerciseVideos"
+export {default as RelatedVideos} from "./RelatedVideos"
