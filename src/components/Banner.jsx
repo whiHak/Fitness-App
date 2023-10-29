@@ -6,19 +6,22 @@ const Banner = () => {
   return (
     <Box display=" flex " justifyContent="space-between" position="relative">
       <Stack
-        gap={{lg:"40px", xs:"30px"}}
+        gap={{ lg: "40px", xs: "30px" }}
         height={{ xs: "450px", md: "985px" }}
         justifyContent="center"
         px="40px"
       >
-      
         <Typography
           sx={{ color: "#FF2625", fontSize: "24px", fontWeight: "bold" }}
         >
           Fitness club
         </Typography>
         <Typography
-          sx={{ fontSize: {lg:"52px", xs:"32px"}, fontWeight: "bold", width: {md:"380px", xs:"270px"} }}
+          sx={{
+            fontSize: { lg: "52px", xs: "32px" },
+            fontWeight: "bold",
+            width: { md: "380px", xs: "270px" },
+          }}
         >
           Sweat, Smile and Repeat
         </Typography>
@@ -38,7 +41,7 @@ const Banner = () => {
             alignItems: "center",
             cursor: "pointer",
           }}
-          onClick={()=>window.scrollTo({top:"1700", behavior:"smooth"})}
+          onClick={() => window.scrollTo({ top: "1700", behavior: "smooth" })}
         >
           Explore Exercise
         </a>
