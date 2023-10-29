@@ -35,6 +35,7 @@ const Navbar = () => {
         <a
           href="#exercise"
           style={{ textDecoration: "none", color: "#3A1212" }}
+          onClick={()=>window.scrollTo({top:"1700", behavior:"smooth"})}
         >
           Exercise
         </a>

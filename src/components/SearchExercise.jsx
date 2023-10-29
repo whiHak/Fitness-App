@@ -21,6 +21,7 @@ const SearchExercise = () => {
       setSearch("");
       setExercises(searchedExercises);
       console.log(searchedExercises);
+      window.scrollTo({top:"1700", behavior:"smooth"})
     }
   };
 
