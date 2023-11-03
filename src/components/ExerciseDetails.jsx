@@ -11,6 +11,7 @@ const ExerciseDetails = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    window.scrollTo({top:"0", behavior:"smooth"})
     const fetchDataFromAPIs = async () => {
       try {
         const exdoc = await fetchData(
