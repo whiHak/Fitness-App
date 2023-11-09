@@ -4,31 +4,23 @@ import { SelectedCategoryContext } from "../context/SelectedCategoryContext";
 import { fetchData, options } from "../utils/fetchData";
 import { ExerciseContext } from "../context/ExerciseContext";
 import ExerciseCard from "./ExerciseCard";
+import { ResultContext } from "../context/ResultContext";
 
 const Exercise = () => {
-  const { data } = useContext(SelectedCategoryContext);
+  // const { data } = useContext(SelectedCategoryContext);
   const exercises = useContext(ExerciseContext);
-  // const [exercises, setExercises] = useState('');
-  // useEffect(() => {
-  //   const fecth = async () => {
-  //     const doc = await fetchData(
-  //       `https://exercisedb.p.rapidapi.com/exercises?bodyPart=${data.bodyPart.toLowerCase()}`,
-  //       options
-  //     );
-  //     setExercises(doc);
-  //   };
+  const {data} = useContext(ResultContext)
 
-  //   return () => {
-  //     fecth();
-  //   };
-  // }, [data.bodyPart]);
-  console.log(data);
+  // const [exercises, setExercises] = useState('');
+  const {ex} = data
+  console.log(ex)
+
   const CardsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1)
 
   const indexOfLastExercise = currentPage * CardsPerPage;
   const indexOfFirstExercise = indexOfLastExercise - CardsPerPage;
-  const exercisePerPage = exercises.slice(indexOfFirstExercise, indexOfLastExercise)
+  const exercisePerPage = ex?.slice(indexOfFirstExercise, indexOfLastExercise)
 
   const paginate = (e, value)=> {
     setCurrentPage(value)
@@ -58,16 +50,16 @@ const Exercise = () => {
         sx={{ mt: "30px" }}
         justifyContent="center"
       >
-        {exercisePerPage?.map((element) => (
+        { exercisePerPage?.map((element) => (
           <ExerciseCard element={element} />
         ))}
       </Stack>
       <Stack direction="row" justifyContent="center" sx={{mt:"40px"}}>
-        {exercises.length > 6 && (
+        {ex.length > 6 && (
           <Pagination
             size="medium"
             shape="circular"
-            count={Math.ceil(exercises.length / CardsPerPage)}
+            count={Math.ceil(ex.length / CardsPerPage)}
             page={currentPage}
             onChange={paginate}
           />

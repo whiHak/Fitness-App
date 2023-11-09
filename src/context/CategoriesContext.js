@@ -4,7 +4,7 @@ import { fetchData, options } from "../utils/fetchData";
 export const CategoriesContext = createContext();
 
 export const CategoriesContextProvider = ({ children }) => {
-  const [bodyParts, setBodyParts] = useState([]);
+  const [bodyParts, setBodyParts] = useState(["ALL"]);
 
   useEffect(() => {
     const setOfCategories = async () => {
@@ -12,12 +12,10 @@ export const CategoriesContextProvider = ({ children }) => {
         "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
         options
       );
-      setBodyParts(["all", ...categories]);
-      // console.log(categories)
+      setBodyParts((prevBodyParts) => [...prevBodyParts, ...categories]);
     };
-    return () => {
-      setOfCategories();
-    };
+
+    setOfCategories();
   }, []);
 
   return (

@@ -11,7 +11,7 @@ export const ExerciseContextProvider = ({ children }) => {
   useEffect(() => {
     const unsub = async () => {
       const data = await fetchData(
-        `https://exercisedb.p.rapidapi.com/exercises`,
+        `https://exercisedb.p.rapidapi.com/exercises?limit=100`,
         options
       );
       setExercise(data);

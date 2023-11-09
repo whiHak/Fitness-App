@@ -2,29 +2,35 @@ import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import React, { useContext,  useState } from "react";
 import Scrollbar from "./Scrollbar";
 import { ExerciseContext } from "../context/ExerciseContext";
+import { SelectedCategoryContext } from "../context/SelectedCategoryContext";
+import { ResultContext } from "../context/ResultContext";
 
 const SearchExercise = () => {
-  const [exercises, setExercises] = useState([]);
   const [search, setSearch] = useState("");
   const exercise = useContext(ExerciseContext);
+  const {data} = useContext(SelectedCategoryContext)
+  const {Rdispatch} = useContext(ResultContext)
   // console.log(exercise)
 
   const handleSearch = async () => {
-    if (search) {
+    if (search || data) {
       const searchedExercises = exercise?.filter(
         (ex) =>
-          ex.name.toLowerCase().includes(search) ||
-          ex.target.toLowerCase().includes(search) ||
-          ex.bodyPart.toLowerCase().includes(search) ||
-          ex.equipment.toLowerCase().includes(search)
+          ex.name.toLowerCase().includes(search || data.bodyPart.toLowerCase()) ||
+          ex.target.toLowerCase().includes(search || data.bodyPart.toLowerCase()) ||
+          ex.bodyPart.toLowerCase().includes(search || data.bodyPart.toLowerCase()) ||
+          ex.equipment.toLowerCase().includes(search || data.bodyPart.toLowerCase())
       );
+
+      Rdispatch({ type: "SET_RESULT", payload: searchedExercises });
       setSearch("");
-      setExercises(searchedExercises);
+
       console.log(searchedExercises);
       window.scrollTo({top:"1700", behavior:"smooth"})
     }
   };
 
+  console.log(data)
   return (
     <Box
       sx={{

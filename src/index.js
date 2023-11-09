@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ExerciseContextProvider } from "./context/ExerciseContext";
 import { CategoriesContextProvider } from "./context/CategoriesContext";
 import { SelectedCategoryContextProvider } from "./context/SelectedCategoryContext";
+import { ResultContextProvider } from "./context/ResultContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -15,7 +16,9 @@ root.render(
       <ExerciseContextProvider>
         <CategoriesContextProvider>
           <SelectedCategoryContextProvider>
-            <App />
+            <ResultContextProvider>
+              <App />
+            </ResultContextProvider>
           </SelectedCategoryContextProvider>
         </CategoriesContextProvider>
       </ExerciseContextProvider>
