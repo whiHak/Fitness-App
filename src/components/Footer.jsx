@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <Box sx={{mt:"70px", bgcolor:"#FFF3F4" }}>
       <Stack alignItems="center" gap="10px" >
-        <img src={logo} alt="Logo" /> Ethio Fitness Center Made by Betselot Abraham
+        <img src={logo} alt="Logo" /> Ethio Fitness Center Made by B95
       </Stack>
     </Box>
     );
