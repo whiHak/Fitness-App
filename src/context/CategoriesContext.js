@@ -12,6 +12,7 @@ export const CategoriesContextProvider = ({ children }) => {
         "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
         options
       );
+      console.log(categories)
       setBodyParts((prevBodyParts) => [...prevBodyParts, ...categories]);
     };
 

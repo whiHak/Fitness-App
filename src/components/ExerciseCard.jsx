@@ -2,9 +2,9 @@ import { Button, Stack, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ExerciseCard = ({ element }) => {
+const ExerciseCard = ({ element, id }) => {
   return (
-    <Link to={`/exercise/${element.id}`} className="exercise-card">
+    <Link to={`/exercise/${id}`} className="exercise-card">
       <img src={element.gifUrl} alt={element.name} />
       <Stack direction="row">
         <Button

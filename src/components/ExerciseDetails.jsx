@@ -26,10 +26,10 @@ const ExerciseDetails = () => {
         );
         setExerciseVideos(yDoc);
 
-        const targetDoc = await fetchData(
-          `https://exercisedb.p.rapidapi.com/exercises/equipment/assisted?type=${exdoc?.target}`
-        );
-        setRelatedVideos(targetDoc)
+        // const targetDoc = await fetchData(
+        //   `https://exercisedb.p.rapidapi.com/exercises/equipment/assisted?type=${exdoc?.target}`
+        // );
+        // setRelatedVideos(targetDoc)
       } catch (error) {
         console.error("Error fetching data:", error);
       }

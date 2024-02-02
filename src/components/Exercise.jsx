@@ -51,7 +51,7 @@ const Exercise = () => {
         justifyContent="center"
       >
         { exercisePerPage?.map((element) => (
-          <ExerciseCard element={element} />
+          <ExerciseCard element={element} id={element?.id} key={element.id} />
         ))}
       </Stack>
       <Stack direction="row" justifyContent="center" sx={{mt:"40px"}}>
