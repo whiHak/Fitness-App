@@ -16,9 +16,7 @@ export const ExerciseContextProvider = ({ children }) => {
       );
       setExercise(data);
     };
-    return () => {  
-      unsub();
-    };
+    unsub();
   }, []);
 
   return (
